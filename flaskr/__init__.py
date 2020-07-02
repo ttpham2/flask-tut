@@ -10,6 +10,8 @@ def create_app(test_config=None):
     )
     app.static_folder = 'static'
     
+    app.jinja_env.add_extension('jinja2.ext.loopcontrols')
+    
     if test_config is None:
         #Load the instance config, if it exists, when not testing
         app.config.from_pyfile('config.py', silent=True)
@@ -38,7 +40,5 @@ def create_app(test_config=None):
     from . import blog
     app.register_blueprint(blog.bp)
     app.add_url_rule('/', endpoint='index')
-    
-    return app
         
     return app

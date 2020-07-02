@@ -15,5 +15,13 @@ CREATE TABLE post(
 	FOREIGN KEY (author_id) REFERENCES user (id)
 );
 
+CREATE TABLE likes(
+	post_id INTEGER NOT NULL,
+	user_id INTEGER NOT NULL,
+	PRIMARY KEY (post_id, user_id)
+	FOREIGN KEY (post_id) REFERENCES post (id)
+	FOREIGN KEY (user_id) REFERENCES user (id)
+);
+
 
 	
